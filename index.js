@@ -9,12 +9,16 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dbConfig = require("./config/database.config");
 
+//MIDDLEWARES
+const jwtAuth = require("./middlewares/auth.middleware");
+
 //STRATEGY
-const passport = require('./config/passport.config');
+const passport = require("./config/passport.config");
 passport();
 
 //ROUTES
 const authRoutes = require("./routes/authUser.routes");
+const taskRoutes = require("./routes/task.routes");
 
 mongoose.connect(dbConfig.mongoURL, dbConfig.settings);
 mongoose.Promise = global.Promise;
@@ -29,12 +33,10 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+
 app.use("/auth", authRoutes());
 
-app.use("/test", (req, res) => {
-  console.log(req.body);
-  res.json("dupa");
-});
+app.use("/tasks", jwtAuth, taskRoutes());
 
 app.listen(9000, (err) => {
   if (err) {
