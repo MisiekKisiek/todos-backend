@@ -9,6 +9,10 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dbConfig = require("./config/database.config");
 
+//STRATEGY
+const passport = require('./config/passport.config');
+passport();
+
 //ROUTES
 const authRoutes = require("./routes/authUser.routes");
 

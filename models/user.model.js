@@ -13,6 +13,6 @@ const UserSchema = new mongoose.Schema({
   //   tasks: [SingleTaskSchema],
 });
 
-UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });
+UserSchema.plugin(passportLocalMongoose, { usernameField: "login" });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("UserToDo", UserSchema);
