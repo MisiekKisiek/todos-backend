@@ -5,6 +5,7 @@ const SingleTaskSchema = new mongoose.Schema({
   // id: String,
   task: String,
   deadline: String,
+  checked: Boolean
 });
 
 const UserSchema = new mongoose.Schema({

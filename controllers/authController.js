@@ -19,7 +19,7 @@ async function register(req, res, next) {
 }
 
 async function login(req, res, next) {
-  const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: 130 })
+  const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: 130000 })
   res.send({ token })
 }
 

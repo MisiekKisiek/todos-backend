@@ -6,7 +6,9 @@ module.exports = () => {
   const api = Router();
 
   api.post("/addTask", TaskController.addTask);
-  api.get("/getTasks", TaskController.getAllTasks);
+  api.get("/getAllTasks", TaskController.getAllTasks);
+  api.put('/editTask', TaskController.editTask);
+  api.delete('/removeTask', TaskController.removeTask)
 
   return api;
 };
