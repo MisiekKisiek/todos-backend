@@ -29,6 +29,7 @@ mongoose.connection.on("error", (err) => {
 
 const app = express();
 
+app.use(express.static(path.resolve(__dirname, "..", "front", "build")));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -38,7 +39,7 @@ app.use("/auth", authRoutes());
 
 app.use("/tasks", jwtAuth, taskRoutes());
 
-app.listen(9000, (err) => {
+app.listen(8000, (err) => {
   if (err) {
     console.log("Jakiś błąd", err);
   } else {

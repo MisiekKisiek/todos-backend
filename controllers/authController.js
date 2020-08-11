@@ -26,7 +26,9 @@ async function register(req, res, next) {
 
 async function login(req, res, next) {
   const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: 100000 })
-  res.send({ token })
+  const user = req.user.login;
+  const email = req.user.email
+  res.send({ token, user, email })
 }
 
 module.exports = { register, login };
