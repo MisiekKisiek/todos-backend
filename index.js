@@ -29,6 +29,7 @@ mongoose.connection.on("error", (err) => {
 
 const app = express();
 
+app.use(express.static(path.resolve(__dirname, "..", "front", "build")));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
