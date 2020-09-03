@@ -2,14 +2,13 @@ const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 
 const SingleTaskSchema = new mongoose.Schema({
-  // id: String,
   task: String,
   deadline: String,
   checked: Boolean
 });
 
 const UserSchema = new mongoose.Schema({
-  login: String,
+  login: { type: String, unique: true, lowercase: true, trim: true },
   email: { type: String, unique: true, lowercase: true, trim: true },
   tasks: [SingleTaskSchema],
 });
