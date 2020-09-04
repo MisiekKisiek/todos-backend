@@ -1,0 +1,16 @@
+#docker run -it -v$(pwd):/home/todos --name todoapp --workdir /home/todos/back --rm  --network todo-backend node:10 node /home/todos/back/index.js
+
+version: "3.8"
+services:
+  node:
+    image: node:10
+    ports: ["2137:8000"]
+    networks: todoapp
+    volumes: [.:/home/todos]
+    workdir: /home/todos/back
+    cmd: ["node", "/home/todos/back/index.js"]
+  db:
+    image: mongo:4
+    network: todoapp
+networks:
+  todoapp:

@@ -39,7 +39,7 @@ app.use("/auth", authRoutes());
 
 app.use("/tasks", jwtAuth, taskRoutes());
 
-app.listen(9000, (err) => {
+app.listen(8000, "0.0.0.0", (err) => {
   if (err) {
     console.log("Jakiś błąd", err);
   } else {
