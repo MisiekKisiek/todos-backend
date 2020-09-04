@@ -42,7 +42,6 @@ async function removeTask(req, res, next) {
 
 async function editTask(req, res, next) {
 
-  // const { taskID ,task, deadline, checked } = req.body;
   const { changedTask } = req.body;
   await User.findOne({ _id: req.user._id }, (err, user) => {
     if (err) {

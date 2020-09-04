@@ -9,20 +9,33 @@ async function register(req, res, next) {
 
   await User.register(user, password, (err) => {
     if (err) {
-      console.log("error", err);
+      if (err.code === 11000) {
+        console.log(err);
+        res.json('Email is already in use')
+      } else {
+        console.log(err)
+        res.json(err.message);
+      }
+
     } else {
-      console.log("User has been added successfully.");
+      console.log("User has been registered successfully");
+      res.json("User has been registered successfully");
     }
   });
-  res.json("Użytkownik został zarejestrowany");
-  next();
 }
 
 async function login(req, res, next) {
+<<<<<<< HEAD
   const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, {
     expiresIn: 10000,
   });
   res.send({ token });
+=======
+  const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: 100000 })
+  const user = req.user.login;
+  const email = req.user.email
+  res.send({ token, user, email })
+>>>>>>> b5090eb25fafd8fdb0317bb10b61f03aa880514e
 }
 
 module.exports = { register, login };
