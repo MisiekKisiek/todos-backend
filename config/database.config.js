@@ -1,5 +1,5 @@
 module.exports = {
-  mongoURL: "mongodb://mongodb:27017/JobProj",
+  mongoURL: "mongodb://db:27017/JobProj",
   settings: {
     useNewUrlParser: true,
   },
