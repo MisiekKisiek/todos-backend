@@ -22,6 +22,7 @@ const taskRoutes = require("./routes/task.routes");
 
 mongoose.connect(dbConfig.mongoURL, dbConfig.settings);
 mongoose.Promise = global.Promise;
+mongoose.set("useCreateIndex", true);
 mongoose.connection.on("error", (err) => {
   console.log("Could not connect to the database");
   process.exit();
