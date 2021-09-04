@@ -29,7 +29,8 @@ async function login(req, res, next) {
   });
   const user = req.user.login;
   const email = req.user.email;
-  res.send({ token, user, email });
+  // res.send({ token, user, email });
+  res.send("dupsko z domu");
 }
 
 module.exports = { register, login };
