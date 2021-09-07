@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 
 async function register(req, res, next) {
   const { login, email, password } = req.body;
-  console.log(req.body);
 
   const user = new User({ login, email });
 
@@ -29,8 +28,7 @@ async function login(req, res, next) {
   });
   const user = req.user.login;
   const email = req.user.email;
-  // res.send({ token, user, email });
-  res.send("dupsko z domu");
+  res.send({ token, user, email });
 }
 
 module.exports = { register, login };
